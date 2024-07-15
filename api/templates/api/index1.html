@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compare Months</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Compare Months </h1>
+        <form method="POST">
+            {% csrf_token %}
+            <label for="year">Year:</label>
+            {{form.month1}}
+
+            <label for="material">Material:</label>
+            {{form.month2}}
+
+            <input type="submit" value="Forecast">
+        </form>
+    </div>
+</body>
+</html>

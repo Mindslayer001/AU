@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.2/Chart.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h2>Comparision between {{m1}} and {{m2}}</h2>
+        <div>
+          <canvas id="myChart"></canvas>
+        </div>
+      </div>
+      <style>
+        .container {
+            width: 80%;
+            margin: 15px auto;
+          }
+      </style>
+</body>
+<script>
+
+    var ctx = document.getElementById("myChart").getContext('2d');
+var myChart = new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: ["Aluminium", "Cobalt", "Copper", "Lead", "Manganese"],
+    datasets: [{
+      label: '{{m1}}',
+      data: [950,703,466,535,76],
+      backgroundColor: "rgba(153,255,51,1)"
+    }, {
+      label: '{{m2}}',
+      data: [705,1372,439,420,100], 
+      backgroundColor: "rgba(255,153,0,1)"
+    }]
+  }
+});
+</script>
+</html>

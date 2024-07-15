@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volume Forecast</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Volume Forecast</h1>
+        <form method="POST">
+            {% csrf_token %}
+            <label for="year">Year:</label>
+            {{form.year}}
+
+            <label for="material">Material:</label>
+            {{form.material}}
+
+            <label for="month">Month:</label>
+            {{form.month}}
+
+            <input type="submit" value="Forecast">
+        </form>
+    </div>
+</body>
+</html>

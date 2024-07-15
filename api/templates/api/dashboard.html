@@ -1,0 +1,11 @@
+{% extends 'api/base.html' %}
+
+{% block content %}
+<div class="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+    <h1 class="text-4xl font-bold mb-8 text-gray-800">Select your Option</h1>
+    <a href='{% url "compare" %}' class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full mb-4 transform transition duration-300 hover:scale-105 shadow-lg">Compare Months</a>
+    <a href='{% url "forecast" %}' class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full transform transition duration-300 hover:scale-105 shadow-lg">AI Forecast</a>
+</div>
+
+{% endblock content %}
+

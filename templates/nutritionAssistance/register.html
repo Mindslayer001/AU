@@ -1,0 +1,73 @@
+{% extends 'nutritionAssistance/base.html' %}
+
+{% block content %}
+    <div class="flex justify-center items-center h-full">
+        <div class="w-full max-w-md mx-auto p-6 bg-gray-100 rounded-xl">
+            {% if dict.isLogged %}
+                <script>
+                    alert("You are already logged in successfully!!");
+                    window.location.href = "/home";
+                </script>
+            {% endif %}
+
+            {% if error %}
+                <div class="alert alert-danger" role="alert">
+                    {{ error }}
+                </div>
+            {% endif %}
+
+            <form id="registerForm" method="post">
+                {% csrf_token %}
+                <h3 class="text-2xl font-bold mb-4 text-center">Register</h3>
+
+                <div class="mb-4 flex justify-between items-center">
+                    <label for="id_username" class="block text-lg font-medium text-gray-700">Username</label>
+                    <div class='border border-gray-300 rounded-md px-3 py-2'>
+                    {{ form.username }}
+                    </div>
+                </div>
+                <div class="mb-4 flex justify-between items-center">
+                    <label for="id_email" class="block text-lg font-medium text-gray-700">Email address</label>
+                    <div class='border border-gray-300 rounded-md px-3 py-2'>
+                    {{ form.email }}
+                    </div>
+                </div>
+                <div class="mb-4 flex justify-between items-center">
+                    <label for="id_password" class="block text-lg font-medium text-gray-700">Password</label>
+                    <div class='border border-gray-300 rounded-md px-3 py-2'>
+                    {{ form.password }}
+                    </div>
+                </div>
+                <div class="mb-4 flex justify-between items-center">
+                    <label for="id_height" class="block text-lg font-medium text-gray-700">Height</label>
+                    <div class='border border-gray-300 rounded-md px-3 py-2'>
+                    {{ form.height }}
+                    </div>
+                </div>
+                <div class="mb-4 flex justify-between items-center">
+                    <label for="id_weight" class="block text-lg font-medium text-gray-700">Weight</label>
+                    <div class='border border-gray-300 rounded-md px-3 py-2'>
+                    {{ form.weight }}
+                    </div>
+                </div>
+                <div class="mb-4 flex justify-between items-center">
+                    <label for="id_age" class="block text-lg font-medium text-gray-700">Age</label>
+                    <div class='border border-gray-300 rounded-md px-3 py-2'>
+                    {{ form.age }}
+                    </div>
+                </div>
+                <div class="mb-4 flex justify-between items-center">
+                    <label for="id_gender" class="block text-lg font-medium text-gray-700">Gender</label>
+                    {{ form.gender }}
+                </div>
+                <div class="mb-4 flex justify-between items-center">
+                    <label for="id_usertype" class="block text-lg font-medium text-gray-700">User Type</label>
+                    {{ form.usertype }}
+                </div>
+
+                <button type="submit" class="mt-4 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 w-full">Register</button>
+                <p class="mt-4 text-center">Already registered? <a href="{% url 'login' %}" class="text-blue-500 hover:text-blue-700">Login now!!</a></p>
+            </form>
+        </div>
+    </div>
+{% endblock %}

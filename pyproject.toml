@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "a"
+version = "0.1.0"
+description = ""
+authors = ["Mani Sankar Chintagunti <manisankarchintagunti@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+django = "^5.0.7"
+pandas = "^2.2.2"
+mathplot = "^0.1"
+scikit-learn = "^1.5.1"
+joblib = "^1.4.2"
+xgboost = "^2.1.0"
+matplotlib = "^3.9.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

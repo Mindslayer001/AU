@@ -1,0 +1,40 @@
+{% extends 'api/base.html' %}
+
+{% block content %}
+    <div class="flex justify-center items-center h-full">
+        <div class="w-full max-w-md mx-auto p-6 bg-gray-100 rounded-xl">
+            {% if dict.isLogged %}
+                <script>
+                    alert("You are already logged in successfully!!");
+                    window.location.href = "/home";
+                </script>
+            {% endif %}
+
+            {% if error %}
+                <div class="alert alert-danger" role="alert">
+                    {{ error }}
+                </div>
+            {% endif %}
+
+            <form id="loginForm" method="post">
+                {% csrf_token %}
+                <h3 class="text-2xl font-bold mb-4 text-center">Log In</h3>
+
+                <div class="mb-4 flex justify-between items-center">
+                    <label for="id_email" class="block text-lg font-medium text-gray-700">Email address</label>
+                    <div class='border border-gray-300 rounded-md px-3 py-2'>
+                    {{ form.email }}
+                    </div>
+                </div>
+                <div class="mb-4 flex justify-between items-center">
+                    <label for="id_password" class="block text-lg font-medium text-gray-700">Password</label>
+                    <div class='border border-gray-300 rounded-md px-3 py-2'>
+                    {{ form.password }}
+                    </div>
+                </div>
+                <button type="submit" class="mt-4 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 w-full">Log In</button>
+                <p class="mt-4 text-center">Already registered? <a href="{% url 'register' %}" class="text-blue-500 hover:text-blue-700">Register</a></p>
+            </form>
+        </div>
+    </div>
+{% endblock %}

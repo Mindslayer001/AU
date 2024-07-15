@@ -1,0 +1,43 @@
+{% extends 'nutritionAssistance/base.html' %}
+
+{% block content %}
+<div class="flex items-center justify-center min-h-screen bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500">
+    <div class="w-full max-w-3xl p-8 bg-white rounded-xl border border-blue-500 shadow-lg">
+        <h1 class="text-3xl font-bold mb-6 text-blue-600 text-center">Calorie Calculator</h1>
+        <form method="post">
+            {% csrf_token %}
+            <div class="mb-6">
+                <label for="query" class="block text-lg font-medium text-blue-500">Enter Food or Drink Items:</label>
+                <input type="text" id="query" name="query" required placeholder="E.g., 3lb carrots and a chicken sandwich" class="mt-2 block w-full p-3 border border-blue-300 rounded-md">
+            </div>
+            <input type="submit" value="Calculate" class="w-full mt-4 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600">
+        </form>
+        {% if items %}
+            <h2 class="text-xl font-semibold mt-6 text-blue-500">Results:</h2>
+            <ul class="mt-4 space-y-4">
+                {% for item in items %}
+                    <li class="p-4 bg-gray-100 rounded-md shadow">
+                        <strong class="block text-lg text-blue-500">{{ item.name|upper }}</strong>
+                        <p>Calories: {{ item.calories }}</p>
+                        <p>Serving Size: {{ item.serving_size_g }}g</p>
+                        <p>Total Fat: {{ item.fat_total_g }}g</p>
+                        <p>Saturated Fat: {{ item.fat_saturated_g }}g</p>
+                        <p>Protein: {{ item.protein_g }}g</p>
+                        <p>Sodium: {{ item.sodium_mg }}mg</p>
+                        <p>Potassium: {{ item.potassium_mg }}mg</p>
+                        <p>Cholesterol: {{ item.cholesterol_mg }}mg</p>
+                        <p>Total Carbohydrates: {{ item.carbohydrates_total_g }}g</p>
+                        <p>Fiber: {{ item.fiber_g }}g</p>
+                        <p>Sugar: {{ item.sugar_g }}g</p>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% elif error %}
+            <p class="text-red-500 mt-4">{{ error }}</p>
+        {% endif %}
+        {% if error_message %}
+            <p class="text-red-500 mt-4">{{ error_message }}</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
